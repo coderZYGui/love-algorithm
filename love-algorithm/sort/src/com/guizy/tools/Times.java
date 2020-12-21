@@ -5,7 +5,8 @@ import java.util.Date;
 
 public class Times {
 	private static final SimpleDateFormat fmt = new SimpleDateFormat("HH:mm:ss.SSS");
-	
+
+	@FunctionalInterface
 	public interface Task {
 		void execute();
 	}
