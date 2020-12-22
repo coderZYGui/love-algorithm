@@ -1,17 +1,45 @@
 package com.guizy;
 
+import com.guizy.tools.Asserts;
 import com.guizy.tools.Integers;
 import com.guizy.tools.Times;
 import org.junit.Test;
 
 /**
- * Description: 冒泡排序
+ * Description: 排序
  *
  * @author guizy1
  * @date 2020/12/21 11:28
  */
-public class BubbleSort {
+public class Sort {
 
+    // ----------------------------------选择排序----------------------------------------
+
+    @Test
+    public void test() {
+        Integer[] array = Integers.random(10, 1, 100);
+//        Integers.println(array);
+//        selectionSort(array);
+//        Integers.println(array);
+        selectionSort(array);
+        Asserts.test(Integers.isAscOrder(array));
+    }
+
+    public static void selectionSort(Integer[] array) {
+        for (int end = array.length - 1; end > 0; end--) {  // 一共比较多少趟
+            int maxIndex = 0; // 假如索引0位置的元素是最大的
+            for (int begin = 1; begin <= end; begin++) {
+                if (array[maxIndex] <= array[begin]) {
+                    maxIndex = begin;
+                }
+            }
+            int temp = array[maxIndex];
+            array[maxIndex] = array[end];   // 每一趟循环, 都和本次循环最后的元素做交换
+            array[end] = temp;
+        }
+    }
+
+    // ----------------------------------冒泡排序----------------------------------------
     @Test
     public void test2() {
         // 表示1-10000都是asc有序
@@ -71,6 +99,7 @@ public class BubbleSort {
         // 这里end > 0为终止条件, 只有end>0,也就是说,end为1的时候,它还可以和它前面的进行比较.
         // end为0的时候, 它前面就没有元素了
         for (int end = array.length - 1; end > 0; end--) {  // 一共比较多少趟
+            // 索引begin从1开始,begin-1,就可以拿到0的位置元素了
             for (int begin = 1; begin <= end; begin++) {
                 if (array[begin - 1] > array[begin]) {
                     int temp = array[begin - 1];
