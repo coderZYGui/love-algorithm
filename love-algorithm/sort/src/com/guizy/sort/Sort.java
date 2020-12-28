@@ -1,5 +1,7 @@
 package com.guizy.sort;
 
+import com.guizy.Student;
+
 import java.text.DecimalFormat;
 
 /**
@@ -8,6 +10,7 @@ import java.text.DecimalFormat;
  * @author guizy1
  * @date 2020/12/28 18:23
  */
+@SuppressWarnings("unchecked")
 public abstract class Sort<E extends Comparable<E>> implements Comparable<Sort<E>> {
 
     protected E[] array;
@@ -65,11 +68,14 @@ public abstract class Sort<E extends Comparable<E>> implements Comparable<Sort<E
         String timeStr = "耗时：" + (time / 1000.0) + "s(" + time + "ms)";
         String compareCountStr = "比较：" + numberString(cmpCount);
         String swapCountStr = "交换：" + numberString(swapCount);
+        String stableStr = "稳定性：" + isStable();
         return "【" + getClass().getSimpleName() + "】\n"
+                + stableStr + " \t"
                 + timeStr + " \t"
                 + compareCountStr + "\t "
                 + swapCountStr + "\n"
                 + "------------------------------------------------------------------";
+
     }
 
     private String numberString(int number) {
@@ -79,4 +85,26 @@ public abstract class Sort<E extends Comparable<E>> implements Comparable<Sort<E
         return fmt.format(number / 100000000.0) + "亿";
     }
 
+    /**
+     * 判断排序算法是否稳定
+     *
+     * @return
+     */
+    private boolean isStable() {
+        Student[] students = new Student[20];
+        /*
+            (0, 10), (10, 10), (20, 10), (30, 10)
+         */
+        for (int i = 0; i < students.length; i++) {
+            students[i] = new Student(i * 10, 10);
+        }
+        sort((E[]) students);
+        // 如果排完序, 还是上面的打印结果, 表示是有序的
+        for (int i = 1; i < students.length; i++) {
+            int score = students[i].score;
+            int prevScore = students[i - 1].score;
+            if (score != prevScore + 10) return false;
+        }
+        return true;
+    }
 }
