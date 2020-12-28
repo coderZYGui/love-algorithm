@@ -17,5 +17,4 @@ public class BubbleSort3 extends Sort {
             end = sortedIndex;
         }
     }
-
 }

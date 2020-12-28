@@ -17,5 +17,4 @@ public class BubbleSort2 extends Sort {
 			if (sorted) break;
 		}
 	}
-
 }

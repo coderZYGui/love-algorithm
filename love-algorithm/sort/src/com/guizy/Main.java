@@ -1,5 +1,9 @@
 package com.guizy;
 
+import com.guizy.sort.BubbleSort3;
+import com.guizy.sort.HeapSort;
+import com.guizy.sort.SelectionSort;
+import com.guizy.sort.Sort;
 import com.guizy.tools.Asserts;
 import com.guizy.tools.Integers;
 import com.guizy.tools.Times;
@@ -11,10 +15,28 @@ import org.junit.Test;
  * @author guizy1
  * @date 2020/12/21 11:28
  */
-public class Sort {
+public class Main {
+
+    public static void main(String[] args) {
+        // Integer[] array1 = Integers.random(10000, 1, 20000);
+        // Integer[] array2 = Integers.copy(array1);
+        // Integer[] array3 = Integers.copy(array1);
+        // Times.test("HeapSort", () -> new HeapSort().sort(array1));
+        // Times.test("SelectionSort", () -> new SelectionSort().sort(array2));
+        // Times.test("BubbleSort3", () -> new BubbleSort3().sort(array3));
+
+        Integer[] array = Integers.random(20000, 1, 30000);
+        testSorts(array, new HeapSort(), new SelectionSort(), new BubbleSort3());
+    }
+
+    static void testSorts(Integer[] array, Sort... sorts) {
+        for (Sort sort : sorts) {
+            sort.sort(Integers.copy(array));
+            System.out.println(sort);
+        }
+    }
 
     // ----------------------------------选择排序----------------------------------------
-
     @Test
     public void test() {
         Integer[] array = Integers.random(10, 1, 100);
