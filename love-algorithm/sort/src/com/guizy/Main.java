@@ -1,13 +1,12 @@
 package com.guizy;
 
-import com.guizy.sort.BubbleSort3;
-import com.guizy.sort.HeapSort;
-import com.guizy.sort.SelectionSort;
-import com.guizy.sort.Sort;
+import com.guizy.sort.*;
 import com.guizy.tools.Asserts;
 import com.guizy.tools.Integers;
 import com.guizy.tools.Times;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 /**
  * Description: 排序
@@ -15,6 +14,7 @@ import org.junit.Test;
  * @author guizy1
  * @date 2020/12/21 11:28
  */
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class Main {
 
     public static void main(String[] args) {
@@ -25,13 +25,22 @@ public class Main {
         // Times.test("SelectionSort", () -> new SelectionSort().sort(array2));
         // Times.test("BubbleSort3", () -> new BubbleSort3().sort(array3));
 
-        Integer[] array = Integers.random(20000, 1, 30000);
-        testSorts(array, new HeapSort(), new SelectionSort(), new BubbleSort3());
+        Integer[] array = Integers.random(10000, 1, 20000);
+        testSorts(array,
+                new BubbleSort1(),
+                new BubbleSort1(),
+                new SelectionSort(),
+                new HeapSort(),
+                new BubbleSort3());
     }
 
     static void testSorts(Integer[] array, Sort... sorts) {
         for (Sort sort : sorts) {
             sort.sort(Integers.copy(array));
+        }
+        // 根据Sort[]数组中对象的 排序时间 进行排序
+        Arrays.sort(sorts);
+        for (Sort sort : sorts) {
             System.out.println(sort);
         }
     }

@@ -6,7 +6,7 @@ package com.guizy.sort;
  * @author guizy1
  * @date 2020/12/28 18:27
  */
-public class HeapSort extends Sort {
+public class HeapSort<E extends Comparable<E>> extends Sort<E> {
 
     private int heapSize;
 
@@ -31,24 +31,24 @@ public class HeapSort extends Sort {
     }
 
     private void siftDown(int index) {
-        Integer element = array[index];
+        E element = array[index];
 
         // 非叶子节点索引,heapSize / 2
         int notLeafCount = heapSize >> 1;
         // index 必须是非叶子节点 (二叉堆-完全二叉树性质的堆结构)
         while (index < notLeafCount) {
             int childIndex = (index << 1) + 1;
-            Integer child = array[childIndex];
+            E child = array[childIndex];
 
             int rightIndex = childIndex + 1;
             // 右子节点比左子节点大
-            if (rightIndex < heapSize && cmpElements(array[rightIndex], child) > 0) {
+            if (rightIndex < heapSize && cmp(array[rightIndex], child) > 0) {
                 childIndex = rightIndex;
                 child = array[rightIndex];
             }
 
             // 大于等于子节点
-            if (cmpElements(element, child) >= 0) break;
+            if (cmp(element, child) >= 0) break;
 
             array[index] = child;
             // 重新设置index

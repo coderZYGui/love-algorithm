@@ -6,7 +6,7 @@ package com.guizy.sort;
  * @author guizy1
  * @date 2020/12/28 18:28
  */
-public class SelectionSort extends Sort {
+public class SelectionSort<E extends Comparable<E>> extends Sort<E> {
     @Override
     protected void sort() {
         for (int end = array.length - 1; end > 0; end--) {  // 一共比较多少趟

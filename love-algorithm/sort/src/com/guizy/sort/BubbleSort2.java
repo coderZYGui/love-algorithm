@@ -1,7 +1,7 @@
 package com.guizy.sort;
 
 
-public class BubbleSort2 extends Sort {
+public class BubbleSort2<E extends Comparable<E>> extends Sort<E> {
 
 	@Override
 	protected void sort() {
