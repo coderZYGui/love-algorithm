@@ -27,8 +27,9 @@ public class Main {
 
         Integer[] array = Integers.random(10000, 1, 20000);
         testSorts(array,
-                new BubbleSort1(),
-                new BubbleSort1(),
+                // new BubbleSort1(),
+                // new BubbleSort2(),
+                new InsertionSort(),
                 new SelectionSort(),
                 new HeapSort(),
                 new BubbleSort3());
