@@ -17,6 +17,21 @@ import java.util.Arrays;
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class Main {
 
+    @Test
+    public void testBinarySearch() {
+        // int[] array = {2, 4, 6, 8, 10};
+        // Asserts.test(BinarySearch.indexOf(array, 4) == 1);
+        // Asserts.test(BinarySearch.indexOf(array, 2) == 0);
+        // Asserts.test(BinarySearch.indexOf(array, 10) == 4);
+        // Asserts.test(BinarySearch.indexOf(array, 43) == -1);
+
+        int[] array = {2, 4, 8, 8, 8, 12, 14};
+        Asserts.test(BinarySearch.search(array, 5) == 2);
+        Asserts.test(BinarySearch.search(array, 1) == 0);
+        Asserts.test(BinarySearch.search(array, 15) == 7);
+        Asserts.test(BinarySearch.search(array, 8) == 5);
+    }
+
     public static void main(String[] args) {
         // Integer[] array1 = Integers.random(10000, 1, 20000);
         // Integer[] array2 = Integers.copy(array1);
@@ -31,6 +46,7 @@ public class Main {
                 // new BubbleSort2(),
                 new InsertionSort1(),
                 new InsertionSort2(),
+                new InsertionSort3(),
                 new SelectionSort(),
                 new HeapSort(),
                 new BubbleSort3());
