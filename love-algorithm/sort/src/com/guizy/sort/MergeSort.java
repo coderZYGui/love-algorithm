@@ -14,7 +14,7 @@ public class MergeSort<E extends Comparable<E>> extends Sort<E> {
     @Override
     protected void sort() {
         leftArray = (E[]) new Comparable[array.length >> 1];
-        sort(0, array.length);
+        divide(0, array.length);
     }
 
     /**
@@ -23,14 +23,16 @@ public class MergeSort<E extends Comparable<E>> extends Sort<E> {
      * @param begin
      * @param end
      */
-    private void sort(int begin, int end) {
+    private void divide(int begin, int end) {
         // 表示只有一个元素了, 就不需要归并排序
         if (end - begin < 2) return;
 
         int mid = (begin + end) >> 1;
-        // 都是左闭右开的
-        sort(begin, mid);
-        sort(mid, end);
+        // 归并排序左半子序列
+        divide(begin, mid);
+        // 归并排序右半子序列
+        divide(mid, end);
+        // 合并整个序列
         merge(begin, mid, end);
     }
 
@@ -52,8 +54,8 @@ public class MergeSort<E extends Comparable<E>> extends Sort<E> {
         }
 
         // 如果左边还没有结束
-        while (li < le) {
-            if (ri < re && cmp(array[ri], leftArray[li]) < 0) { // cmp位置改为 <= 会失去稳定性
+        while (li < le) {  // li == le 左边结束, 则直接结束归并
+            if (ri < re && cmp(array[ri], leftArray[li]) < 0) { // cmp <= 会造成不稳定
                 // 拷贝右边数组到array
                 array[ai++] = array[ri++];
             } else {
