@@ -40,17 +40,19 @@ public class Main {
         // Times.test("SelectionSort", () -> new SelectionSort().sort(array2));
         // Times.test("BubbleSort3", () -> new BubbleSort3().sort(array3));
 
-        Integer[] array = Integers.random(10000, 1, 20000);
+        Integer[] array = Integers.random(20000, 1, 20000);
         testSorts(array,
-                // new BubbleSort1(),
-                // new BubbleSort2(),
-                new InsertionSort1(),
-                new InsertionSort2(),
-                new InsertionSort3(),
-                new SelectionSort(),
+//                new BubbleSort1(),
+//                new BubbleSort2(),
+//                new BubbleSort3(),
+//                new SelectionSort(),
                 new HeapSort(),
+//                new InsertionSort1(),
+//                new InsertionSort2(),
+//                new InsertionSort3(),
                 new MergeSort(),
-                new BubbleSort3());
+                new QuickSort()
+        );
     }
 
     static void testSorts(Integer[] array, Sort... sorts) {
