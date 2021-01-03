@@ -29,7 +29,8 @@ public class Main {
         testSorts(array,
                 // new BubbleSort1(),
                 // new BubbleSort2(),
-                new InsertionSort(),
+                new InsertionSort1(),
+                new InsertionSort2(),
                 new SelectionSort(),
                 new HeapSort(),
                 new BubbleSort3());

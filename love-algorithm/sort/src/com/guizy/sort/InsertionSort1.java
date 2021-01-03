@@ -6,7 +6,7 @@ package com.guizy.sort;
  * @author guizy
  * @date 2021/1/3 09:46
  */
-public class InsertionSort<E extends Comparable<E>> extends Sort<E> {
+public class InsertionSort1<E extends Comparable<E>> extends Sort<E> {
     @Override
     protected void sort() {
         // 从1开始, 将0位置的元素当作已经有序的元素
