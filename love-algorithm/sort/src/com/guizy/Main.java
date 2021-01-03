@@ -49,6 +49,7 @@ public class Main {
                 new InsertionSort3(),
                 new SelectionSort(),
                 new HeapSort(),
+                new MergeSort(),
                 new BubbleSort3());
     }
 
