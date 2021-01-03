@@ -40,6 +40,9 @@ public class QuickSort<T extends Comparable<T>> extends Sort<T> {
      * @return 轴点元素的最终位置
      */
     private int pivotIndex(int begin, int end) {
+        // 随机选择一个元素跟begin位置进行交换，为了降低最好时间复杂度
+        swap(begin, begin + (int)(Math.random() * (end - begin)));
+
         // 备份begin位置的元素
         T pivot = array[begin];
         // end指向最后一个元素, 之前end索引指向的是arr.length
